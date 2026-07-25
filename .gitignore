@@ -35,4 +35,4 @@ bin/
 ### Project ###
 *.iml
 .idea/
-*.json
+WordFightGame - *.json
