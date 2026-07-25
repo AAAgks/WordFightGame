@@ -1,63 +1,37 @@
-# 🎮 WordFight — 文字格斗游戏
+# WordFight
 
-Java 控制台回合制文字 RPG，支持账号注册登录、角色属性分配、多种技能战斗、敌人成长与连胜奖励。
+> Java 控制台回合制文字 RPG
 
-## 项目结构
+---
 
-```
-src/
-├── App.java                          # 入口
-└── com/xiaogan/
-    ├── bean/
-    │   ├── Account.java              # 账号模型
-    │   ├── GameCharacter.java        # 角色基类（HP/ATK/DEF）
-    │   ├── Player.java               # 玩家（继承 + 技能接口）
-    │   ├── Enemy.java                # 敌人（4种类型 + AI）
-    │   ├── Skill.java                # 技能模型
-    │   └── UseSkills.java            # 技能接口
-    └── ui/
-        ├── Login.java                # 登录/注册/验证码
-        ├── MainMenuActivity.java     # 主菜单
-        ├── Game.java                 # 角色创建 + 战斗循环
-        └── ShowHp.java               # HP条渲染
-```
+## 版本
 
-## 功能
-
-- **账号系统**：注册（用户名/密码校验）、登录（验证码、3次锁定）
-- **角色创建**：20属性点自由分配到生命/攻击/防御
-- **回合制战斗**：3种玩家技能 + 4种敌人（随机AI行为）
-- **敌人类型**：初级战士、敏捷刺客、重装坦克（含防御姿态）、神秘法师
-- **连胜成长**：每3胜 HP+30 / ATK+3 / DEF+2；敌人随轮数变强
-- **战后恢复**：胜利随机恢复20~40 HP
-- **HP可视化**：████░░░░ 进度条
-
-## 玩家技能
-
-| 技能 | 消耗 | 效果 |
+| 版本 | 目录 | 说明 |
 |------|------|------|
-| 普通攻击 | 无 | ATK × 1.0 |
-| 强力一击 | 10 HP | ATK × 1.8 |
-| 生命汲取 | 10 HP | 恢复 0~20 HP |
+| **[v0.2](v0.2/)** | `v0.2/` | 最新版 — 系统化重构，6技能、8敌人、4道具 |
+| [v0.1](v0.1/) | `v0.1/` | 初版 — 基础战斗循环 |
 
-注意：别自己把自己弄死了！！！！
+---
 
-## 运行
+## 快速开始
 
 ```bash
-# 编译
-javac -encoding UTF-8 -d out src/App.java src/com/xiaogan/bean/*.java src/com/xiaogan/ui/*.java
+# v0.2（推荐）
+cd v0.2
+javac -d out src/com/xiaogan/App.java
+java -cp out com.xiaogan.App
 
-# 运行
-java -cp out App
+# v0.1
+cd v0.1
+javac -d out src/com/xiaogan/App.java
+java -cp out com.xiaogan.App
 ```
 
-需要 JDK 17+。
+## v0.1 → v0.2 主要变化
 
-## 技术栈
-
-Java · OOP（继承/接口/多态）· 控制台 I/O
-
-## 许可
-
-练手项目，随意使用。
+- 包结构 `bean` → `domain` 标准化
+- 技能 `switch(index)` → `switch(SkillType)` 枚举驱动
+- 敌人硬编码 → `EnemyTemplate` + `EnemyFactory`
+- 伤害公式 `atk-def` → `atk×100/(100+def)`
+- 新增 3 技能、5 敌人、3 道具
+- 详见 [v0.2/README.md](v0.2/README.md)
