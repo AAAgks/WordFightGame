@@ -1,6 +1,11 @@
 package com.xiaogan.ui;
 
 import com.xiaogan.domain.User;
+
+import javax.swing.*;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -8,8 +13,17 @@ import java.util.Scanner;
 public class Login {
 
 
+
+    JMenuItem backMainItem  = new JMenuItem("返回主菜单");
+    JMenuItem registerItem  = new JMenuItem("注册");
+    JMenuItem forgetPwdItem  = new JMenuItem("忘记密码");
+    JMenuItem updatePwdItem  = new JMenuItem("修改密码");
+    JMenuItem exitGameItem  = new JMenuItem("退出游戏");
+
     public void start(){
-        ArrayList<User> list = new ArrayList<>();
+
+        ArrayList<User> list=new ArrayList<>();
+
         while (true) {
             System.out.println("╔════════════════════════════════╗");
             System.out.println("    🎮 欢迎来到文字格斗游戏 🎮   ");
@@ -27,9 +41,10 @@ public class Login {
                 }
                 default-> System.out.println("无效的选择，请重新输入");
             }
-        }
-    }
 
+        }
+
+    }
 
     private void login(ArrayList<User> list){
         Scanner sc=new Scanner(System.in);
@@ -89,8 +104,6 @@ public class Login {
     private void register(ArrayList<User> list){
         System.out.println("用户注册");
         User u = new User();
-
-
 
         while(true){
             Scanner sc=new Scanner(System.in);

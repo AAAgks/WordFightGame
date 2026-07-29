@@ -5,6 +5,7 @@ import com.xiaogan.ui.Login;
 
 public class App {
     public static void main(String[] args) {
+//        new Login();
             Login login = new Login();
             login.start();
     }
